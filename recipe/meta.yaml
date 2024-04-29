@@ -1,0 +1,55 @@
+{% set name = "hydralit_components" %}
+{% set version = "1.0.10" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: aeae8c9531451a5b93df9f4df208b4cb159b1a0ccf523f2a45d633e64b700496
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+    - wheel
+    - bs4
+  run:
+    - bs4
+    - lxml
+    - python
+    - streamlit >=1.7
+
+test:
+  imports:
+    - hydralit_components
+    - hydralit_components.CookieManager
+    - hydralit_components.Experimental
+    - hydralit_components.InfoCard
+    - hydralit_components.Loaders
+    - hydralit_components.NavBar
+    - hydralit_components.OptionBar
+    - hydralit_components.ProgressBar
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/tanglespace/hydralit_components
+  license: Apache 2
+  license_family: APACHE
+  license_file: 
+  summary: Components to use with or without the Hydralit package.
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - psteyer
