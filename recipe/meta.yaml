@@ -54,6 +54,7 @@ about:
   license_family: APACHE
   license_file: LICENSE
   summary: Components to use with or without the Hydralit package.
+  description: Components to use with or without the Hydralit package.
   doc_url: https://github.com/TangleSpace/hydralit_components/blob/main/README.md
   dev_url: https://github.com/TangleSpace/hydralit_components
 
