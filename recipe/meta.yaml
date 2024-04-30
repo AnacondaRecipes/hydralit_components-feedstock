@@ -8,12 +8,17 @@ package:
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
   sha256: aeae8c9531451a5b93df9f4df208b4cb159b1a0ccf523f2a45d633e64b700496
+  patches:
+    - patches/0001-bs4-to-beautifulsoup4.patch
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
+  build:
+    - patch       # [not win]
+    - m2-patch    # [win]
   host:
     - pip
     - python
